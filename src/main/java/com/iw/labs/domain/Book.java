@@ -1,4 +1,4 @@
-package com.iw.labs.getting.started.domain;
+package com.iw.labs.domain;
 
 import java.util.Date;
 
