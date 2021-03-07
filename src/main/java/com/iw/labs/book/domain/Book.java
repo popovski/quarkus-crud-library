@@ -1,4 +1,4 @@
-package com.iw.labs.domain;
+package com.iw.labs.book.domain;
 
 import java.util.Date;
 
@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import com.iw.labs.infrastructure.domain.BaseEntity;
 
 @Entity
 @Table(name = "book")

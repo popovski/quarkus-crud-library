@@ -1,11 +1,11 @@
-package com.iw.labs.service;
+package com.iw.labs.book.service;
 
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.iw.labs.domain.Book;
-import com.iw.labs.repository.BookRepository;
+import com.iw.labs.book.domain.Book;
+import com.iw.labs.book.repository.BookRepository;
 
 @ApplicationScoped
 public class BookService {
@@ -16,7 +16,7 @@ public class BookService {
 
 	@Inject
 	BookRepository bookRepository;
-	
+
 	public Book findById(Long id) {
 		log.info("Execute Book findById");
 		try {
@@ -26,7 +26,7 @@ public class BookService {
 		}
 		return null;
 	}
-	
+
 	public List<Book> findAll() {
 		log.info("Execute Book findAll");
 		try {
