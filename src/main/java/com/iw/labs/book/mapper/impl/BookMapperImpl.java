@@ -12,9 +12,8 @@ import com.iw.labs.infrastructure.mapper.AbstractGeneralMapper;
 @ApplicationScoped
 public class BookMapperImpl extends AbstractGeneralMapper implements BookMapper {
 	
-	@Inject
-	public BookMapperImpl(ModelMapper modelMapper) {
-		super(modelMapper);
+	public BookMapperImpl() {
+		super(new ModelMapper());
 	}
 
 	@Override

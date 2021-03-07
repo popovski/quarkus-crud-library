@@ -8,10 +8,12 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import com.iw.labs.book.domain.Book;
 import com.iw.labs.infrastructure.repository.BaseRepository;
 
 @ApplicationScoped
+@Transactional
 public class BookRepository implements BaseRepository<Book> {
 	@Inject
 	EntityManager entityManager;
