@@ -4,6 +4,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -24,14 +25,19 @@ public class BookResource {
 	}
 
 	@GET
-	@Path("{id}")
+	@Path("{uuid}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Book findBookById(@PathParam("id") Long id) {
-		return bookService.findById(id);
+	public Book findBookById(@PathParam("uuid") String uuid) {
+		return bookService.findByUuid(uuid);
 	}
 
 	@POST
 	public BookPojo createBook(BookPojo requestBookPojo) {
 		return bookService.createBook(requestBookPojo);
+	}
+	
+	@PUT
+	public BookPojo updateBook(BookPojo requestBookPojo) {
+		return bookService.updateBook(requestBookPojo);
 	}
 }

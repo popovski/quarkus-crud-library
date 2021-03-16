@@ -21,12 +21,24 @@ public class BookService {
 
 	@Inject
 	BookMapperImpl bookMapper;
-	
+
 	public Book findById(Long id) {
-		log.info("Execute Book findById");
+		log.info("Execute Book findById " + id);
 		try {
 			return bookRepository.findById(id);
 		} catch (Exception e) {
+			log.error("Error executing findById");
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Book findByUuid(String uuid) {
+		log.info("Execute Book findByUuid " + uuid);
+		try {
+			return bookRepository.findByUuid(uuid);
+		} catch (Exception e) {
+			log.error("Error executing findById " + uuid);
 			e.printStackTrace();
 		}
 		return null;
@@ -37,18 +49,27 @@ public class BookService {
 		try {
 			return bookRepository.findAll();
 		} catch (Exception e) {
+			log.error("Error executing findAll");
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public BookPojo createBook(BookPojo bookPojo) {
-		log.debug("Execute createBook with parameters");
-		
+		log.debug("Execute createBook with parameters " + bookPojo.toString());
+
 		Book transientBook = bookMapper.dtoToEntity(bookPojo);
 		Book persistedBook = bookRepository.save(transientBook);
 
 		return bookMapper.entityToDto(persistedBook);
 	}
 
+	public BookPojo updateBook(BookPojo bookPojo) {
+		log.debug("Execute updateBook with parameters " + bookPojo.toString());
+
+		Book transientBook = bookMapper.dtoToEntity(bookPojo);
+		bookRepository.update(transientBook);
+
+		return bookMapper.entityToDto(transientBook);
+	}
 }
